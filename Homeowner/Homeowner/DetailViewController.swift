@@ -46,4 +46,20 @@ class DetailViewController: UIViewController {
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
     }
+    
+    // Called when VC is popped off stack
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Saves changes to item's text field
+        // (does not update values in table view
+        item.name = nameField.text ?? ""
+        item.serialNumber = serialNumberField.text
+        
+        if let valueText = valueField.text, let value = numberFormatter.number(from: valueText) {
+            item.valueInDollars = value.intValue
+        } else {
+            item.valueInDollars = 0
+        }
+    }
 }

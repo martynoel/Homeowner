@@ -109,4 +109,11 @@ class ItemsViewController: UITableViewController {
             preconditionFailure("Unexpected segue identifier")
         }
     }
+    
+    // Called when VC before it is popped off the stack
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 }
