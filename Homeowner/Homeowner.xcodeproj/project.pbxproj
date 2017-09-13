@@ -17,6 +17,7 @@
 		39F36B9A1F68837400D6AD72 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F36B991F68837400D6AD72 /* Item.swift */; };
 		39F36B9C1F6889D000D6AD72 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F36B9B1F6889D000D6AD72 /* ItemStore.swift */; };
 		39F36BA01F69858200D6AD72 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F36B9F1F69858200D6AD72 /* ItemCell.swift */; };
+		39F36BA21F69B7B100D6AD72 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F36BA11F69B7B100D6AD72 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		39F36B991F68837400D6AD72 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		39F36B9B1F6889D000D6AD72 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		39F36B9F1F69858200D6AD72 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		39F36BA11F69B7B100D6AD72 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				39F36B691F68804100D6AD72 /* AppDelegate.swift */,
 				39F36B6D1F68804100D6AD72 /* Main.storyboard */,
+				39F36BA11F69B7B100D6AD72 /* DetailViewController.swift */,
 				39F36B991F68837400D6AD72 /* Item.swift */,
 				39F36B9B1F6889D000D6AD72 /* ItemStore.swift */,
 				39F36B971F68821500D6AD72 /* ItemsViewController.swift */,
@@ -271,6 +274,7 @@
 				39F36B981F68821500D6AD72 /* ItemsViewController.swift in Sources */,
 				39F36B9A1F68837400D6AD72 /* Item.swift in Sources */,
 				39F36B9C1F6889D000D6AD72 /* ItemStore.swift in Sources */,
+				39F36BA21F69B7B100D6AD72 /* DetailViewController.swift in Sources */,
 				39F36B6A1F68804100D6AD72 /* AppDelegate.swift in Sources */,
 				39F36BA01F69858200D6AD72 /* ItemCell.swift in Sources */,
 			);
