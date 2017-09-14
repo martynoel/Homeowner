@@ -20,7 +20,7 @@ class ItemsViewController: UITableViewController {
     }
     
     // Adding
-    @IBAction func addNewItem(_ sender: UIButton) {
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         
         // Create a new item and add it to the store
         let newItem = itemStore.createItem()
@@ -31,17 +31,6 @@ class ItemsViewController: UITableViewController {
             
             // Insert this row into the table
             tableView.insertRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
-    // Editing
-    @IBAction func toggleEditingMode(_ sender: UIButton) {
-        if isEditing {
-            sender.setTitle("Edit", for: .normal)
-            setEditing(false, animated: true)
-        } else {
-            sender.setTitle("Done", for: .normal)
-            setEditing(true, animated: true)
         }
     }
     
@@ -115,5 +104,12 @@ class ItemsViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+    }
+    
+    // Add "Edit" button to Nav Controller's left bar button
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 }

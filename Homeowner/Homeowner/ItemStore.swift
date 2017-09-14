@@ -11,6 +11,27 @@ import UIKit
 class ItemStore {
     var allItems = [Item]()
     
+    // Add URL where items will be saved to
+    // Archived in application sandbox's /Documents directory
+    let itemArchiveURL: URL = {
+        
+        // documentsDirectories is an array
+        // FileManager.default.urls searches filesystem for /Documents folder
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first! // Get first (and only) item in array
+        
+        // Append archive file name to end of th is URL
+        // "Documents/items.archive" or some shit like that is its final form
+        return documentDirectory.appendingPathComponent("items.archive")
+    }()
+    
+    // Load files (deserialize) upon ItemStore initialization
+    init() {
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {
+            allItems = archivedItems
+        }
+    }
+    
     @discardableResult func createItem() -> Item {
         let newItem = Item(random: true)
         
@@ -39,5 +60,10 @@ class ItemStore {
         
         // Insert selected item into new location
         allItems.insert(movedItem, at: toIndex)
+    }
+    
+    func saveChanges() -> Bool {
+        print("Saving items to: \(itemArchiveURL.path)")
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: itemArchiveURL.path)
     }
 }

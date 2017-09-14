@@ -12,12 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let itemStore = ItemStore()
 
     // Called when application first launches
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        // Create an ItemStore
-        let itemStore = ItemStore()
         
         // Access the ItemsViewController and set its item store
         let navController = window!.rootViewController as! UINavigationController
@@ -31,10 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    
+    // Saves state to file "items.archive" in app's sandbox
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let success = itemStore.saveChanges()
+        
+        if (success) {
+            print("Saved all of the Items")
+        } else {
+            print("Could not sae any of the items")
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

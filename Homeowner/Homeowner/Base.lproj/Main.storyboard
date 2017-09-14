@@ -18,44 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="aUz-lX-TCH">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufj-k0-Lmt">
-                                    <rect key="frame" x="8" y="13.5" width="175.5" height="33"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <state key="normal" title="Edit">
-                                        <color key="titleColor" red="1" green="0.2405528093" blue="0.79213991969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="toggleEditingMode:" destination="6Ze-Ew-Wmd" eventType="touchUpInside" id="0e3-8A-IeO"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6l7-3B-51b">
-                                    <rect key="frame" x="191.5" y="13.5" width="175.5" height="33"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <state key="normal" title="Add">
-                                        <color key="titleColor" red="1" green="0.2405528093" blue="0.79213991969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="addNewItem:" destination="6Ze-Ew-Wmd" eventType="touchUpInside" id="7D0-zb-vvr"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="6l7-3B-51b" secondAttribute="trailing" constant="8" id="GJu-AR-L0M"/>
-                                <constraint firstItem="6l7-3B-51b" firstAttribute="width" secondItem="Ufj-k0-Lmt" secondAttribute="width" id="GgD-oG-gRe"/>
-                                <constraint firstItem="Ufj-k0-Lmt" firstAttribute="centerY" secondItem="aUz-lX-TCH" secondAttribute="centerY" id="Nt6-tZ-Orz"/>
-                                <constraint firstItem="6l7-3B-51b" firstAttribute="leading" secondItem="Ufj-k0-Lmt" secondAttribute="trailing" constant="8" id="Xe6-JA-GKb"/>
-                                <constraint firstItem="6l7-3B-51b" firstAttribute="centerY" secondItem="aUz-lX-TCH" secondAttribute="centerY" id="bRT-RB-Ew6"/>
-                                <constraint firstItem="Ufj-k0-Lmt" firstAttribute="leading" secondItem="aUz-lX-TCH" secondAttribute="leading" constant="8" id="uqD-si-68W"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="E82-bD-mgO" customClass="ItemCell" customModule="Homeowner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E82-bD-mgO" id="B2f-36-NHS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
@@ -103,7 +68,13 @@
                             <outlet property="delegate" destination="6Ze-Ew-Wmd" id="5aX-Zu-zJg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="tYE-Gt-sQf"/>
+                    <navigationItem key="navigationItem" id="tYE-Gt-sQf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3vK-XZ-ryu">
+                            <connections>
+                                <action selector="addNewItem:" destination="6Ze-Ew-Wmd" id="jXx-hg-1GG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Nw-j7-WhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
