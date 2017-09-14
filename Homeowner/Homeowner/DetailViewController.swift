@@ -63,6 +63,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         // Get picked image from info dictionary
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+        // Store image in ImageStore for item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        
         // Put that image on screen in image view
         imageView.image = image
         
