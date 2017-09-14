@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    // MARK: Properties
+    
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
@@ -23,80 +25,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     }
     var imageStore: ImageStore!
     
-    @IBAction func choosePhotoSource(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.modalPresentationStyle = .popover
-        alertController.popoverPresentationController?.barButtonItem = sender
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-                let imagePicker = self.imagePicker(for: .camera)
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-            alertController.addAction(cameraAction)
-        }
-        
-        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
-            let imagePicker = self.imagePicker(for: .photoLibrary)
-            imagePicker.modalPresentationStyle = .popover
-            imagePicker.popoverPresentationController?.barButtonItem = sender
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-        alertController.addAction(photoLibraryAction)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    // Helper method to create Image Picker Controller
-    func imagePicker(for sourceType: UIImagePickerControllerSourceType) -> UIImagePickerController {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = sourceType
-        imagePicker.delegate = self
-        return imagePicker
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        // Get picked image from info dictionary
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
-        // Store image in ImageStore for item's key
-        imageStore.setImage(image, forKey: item.itemKey)
-        
-        // Put that image on screen in image view
-        imageView.image = image
-        
-        // Take image picker off screen (you must dismiss it yourself)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    let numberFormatter: NumberFormatter = {
-        
-        let formatter = NumberFormatter()
-        
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        
-        return formatter
-    }()
-    
-    let dateFormatter: DateFormatter = {
-        
-        let formatter = DateFormatter()
-        
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        
-        return formatter
-    }()
-    
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
+    // MARK: View lifecycle methods
     
     // Called when view is about to become visible
     override func viewWillAppear(_ animated: Bool) {
@@ -131,8 +60,91 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         }
     }
     
+    // MARK: Event methods
+    
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    // MARK: Formatter methods
+    
+    let numberFormatter: NumberFormatter = {
+        
+        let formatter = NumberFormatter()
+        
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        
+        return formatter
+    }()
+    
+    let dateFormatter: DateFormatter = {
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        return formatter
+    }()
+    
+    // MARK: Image-picking methods
+    
+    @IBAction func choosePhotoSource(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+                let imagePicker = self.imagePicker(for: .camera)
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+        }
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            let imagePicker = self.imagePicker(for: .photoLibrary)
+            imagePicker.modalPresentationStyle = .popover
+            imagePicker.popoverPresentationController?.barButtonItem = sender
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        alertController.addAction(photoLibraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: ImagePickerController methods
+    
+    // Helper method to create Image Picker Controller
+    func imagePicker(for sourceType: UIImagePickerControllerSourceType) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = self
+        return imagePicker
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // Get picked image from info dictionary
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Store image in ImageStore for item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        
+        // Put that image on screen in image view
+        imageView.image = image
+        
+        // Take image picker off screen (you must dismiss it yourself)
+        dismiss(animated: true, completion: nil)
     }
 }
