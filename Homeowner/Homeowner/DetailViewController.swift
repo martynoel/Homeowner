@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// DetailViewController handles the functionality behind detail view
+/// Manages connection between DetailView and ImageStore
+
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     // MARK: Properties

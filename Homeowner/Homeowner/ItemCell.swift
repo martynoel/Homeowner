@@ -8,7 +8,12 @@
 
 import UIKit
 
+/// ItemCell represents a cell on the app's table view of items.
+
 class ItemCell: UITableViewCell {
+    
+    // MARK: Properties
+    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var serialNumberLabel: UILabel!
     @IBOutlet var valueLabel: UILabel!

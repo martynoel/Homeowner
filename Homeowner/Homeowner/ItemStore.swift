@@ -8,7 +8,13 @@
 
 import UIKit
 
+/// ItemStore stores instances of items in array.
+/// Manages creating, deleting, and archiving items
+
 class ItemStore {
+    
+    // MARK: Properties
+    
     var allItems = [Item]()
     
     // Add URL where items will be saved to
@@ -25,6 +31,8 @@ class ItemStore {
         return documentDirectory.appendingPathComponent("items.archive")
     }()
     
+    // MARK: Initializers
+    
     // Load files (deserialize) upon ItemStore initialization
     init() {
         if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {
@@ -40,11 +48,7 @@ class ItemStore {
         return newItem
     }
     
-    func removeItem(_ item: Item) {
-        if let index = allItems.index(of: item) {
-            allItems.remove(at: index)
-        }
-    }
+    // MARK: Moving/removing/saving methods
     
     // Changes order of items in allItems array
     func moveItem(from fromIndex: Int, to toIndex: Int) {
@@ -60,6 +64,12 @@ class ItemStore {
         
         // Insert selected item into new location
         allItems.insert(movedItem, at: toIndex)
+    }
+    
+    func removeItem(_ item: Item) {
+        if let index = allItems.index(of: item) {
+            allItems.remove(at: index)
+        }
     }
     
     func saveChanges() -> Bool {

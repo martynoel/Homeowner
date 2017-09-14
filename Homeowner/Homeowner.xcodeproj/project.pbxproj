@@ -108,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				39F36B691F68804100D6AD72 /* AppDelegate.swift */,
+				39F36B721F68804100D6AD72 /* LaunchScreen.storyboard */,
 				39F36B6D1F68804100D6AD72 /* Main.storyboard */,
 				39F36B991F68837400D6AD72 /* Item.swift */,
 				39F36B9B1F6889D000D6AD72 /* ItemStore.swift */,
@@ -116,7 +117,6 @@
 				39F36B971F68821500D6AD72 /* ItemsViewController.swift */,
 				39F36BA11F69B7B100D6AD72 /* DetailViewController.swift */,
 				39F36B701F68804100D6AD72 /* Assets.xcassets */,
-				39F36B721F68804100D6AD72 /* LaunchScreen.storyboard */,
 				39F36B751F68804100D6AD72 /* Info.plist */,
 			);
 			path = Homeowner;

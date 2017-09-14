@@ -8,13 +8,18 @@
 
 import UIKit
 
-/// ImageStore fetches/caches images as they are needed
+/// ImageStore stores images to conserve memory.
+/// Fetches/caches images as they are needed
 /// Will flush cache if device is low on memory
 
 class ImageStore {
     
+    // MARK: Properties
+    
     // NSCache automatically removes objects if memory is too low
     let cache = NSCache<NSString, UIImage>()
+    
+    // MARK: Image storing methods
     
     /// All these functions cast String to NSString
     
