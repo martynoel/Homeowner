@@ -16,6 +16,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
+    var item: Item! {
+        didSet {
+            navigationItem.title = item.name
+        }
+    }
+    var imageStore: ImageStore!
+    
     @IBAction func choosePhotoSource(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.modalPresentationStyle = .popover
@@ -61,12 +68,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         
         // Take image picker off screen (you must dismiss it yourself)
         dismiss(animated: true, completion: nil)
-    }
-    
-    var item: Item! {
-        didSet {
-            navigationItem.title = item.name
-        }
     }
     
     let numberFormatter: NumberFormatter = {
