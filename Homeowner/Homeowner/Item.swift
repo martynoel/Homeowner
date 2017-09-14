@@ -43,11 +43,14 @@ class Item: NSObject, NSCoding {
             idx = arc4random_uniform(UInt32(nouns.count))
             let randomNoun = nouns[Int(idx)]
             
-            let randomName = "\(randomAdjective) \(randomNoun)"
+//            let randomName = "\(randomAdjective) \(randomNoun)"
             let randomValue = Int(arc4random_uniform(100))
             let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first!
             
-            self.init(name: randomName, serialNumber: randomSerialNumber, valueInDollars: randomValue)
+//            self.init(name: randomName, serialNumber: randomSerialNumber, valueInDollars: randomValue)
+            
+            self.init(name: "Item Name", serialNumber: randomSerialNumber, valueInDollars: randomValue)
+            
         } else {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
         }
